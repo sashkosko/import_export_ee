@@ -1,34 +1,35 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import pandas as pd
-import numpy as np
 from datetime import datetime
-from datetime import timedelta
 from tableauscraper import TableauScraper as TS
 
-def imp_exp_EE(path):
-    # url_and_date = [
-    #     ['https://public.tableau.com/shared/B55JK3CC4', '01_10_22-23_01_23'],
-    #     ['https://public.tableau.com/shared/97DQKRQPC', '01_09_22-30_09_22'],
-    #     ['https://public.tableau.com/shared/S6MG59ZZ3', '01_08_22-31_08_22'],
-    #     ['https://public.tableau.com/shared/TG62Y4C9W', '01_07_22-31_07_22'],
-    #     ['https://public.tableau.com/shared/ZSCSM3GK8', '01_05_22-31_05_22'],
-    #     ['https://public.tableau.com/shared/YWZXW5439', '01_04_22-30_04_22'],
-    #     ['https://public.tableau.com/shared/W27W2JXQD', '01_02_22-31_03_22'],
-    #     ['https://public.tableau.com/shared/63K2GKWFC', '01_01_22-31_01_22']
-    #     ['https://public.tableau.com/views/DAM_16382804894610/8-', 'Останні дані']
-    # ]
+if __name__ == '__main__':
+    # Скрипт витягує дані в навпівавтоматичному режимі
+    # Щоб отримати лінк на потрібний проміжок часу, треба зайти на https://public.tableau.com/views/DAM_16382804894610/8-
+    # і відмітити потрібні дні галочками. Потім натиснути кнопку шерингу і скопіювати url
+    # Якщо вибрати одночасно більше 30 днів, то витянути дані не можна. Тому
     url_and_date = [
-        [input('Введіть посилання на дашборд Tableau: '), 'Останні дані']
+        ['https://public.tableau.com/shared/B55JK3CC4', '01_10_22-23_01_23'],
+        ['https://public.tableau.com/shared/97DQKRQPC', '01_09_22-30_09_22'],
+        ['https://public.tableau.com/shared/S6MG59ZZ3', '01_08_22-31_08_22'],
+        ['https://public.tableau.com/shared/TG62Y4C9W', '01_07_22-31_07_22'],
+        ['https://public.tableau.com/shared/ZSCSM3GK8', '01_05_22-31_05_22'],
+        ['https://public.tableau.com/shared/YWZXW5439', '01_04_22-30_04_22'],
+        ['https://public.tableau.com/shared/W27W2JXQD', '01_02_22-31_03_22'],
+        ['https://public.tableau.com/shared/63K2GKWFC', '01_01_22-31_01_22']
+        ['https://public.tableau.com/views/DAM_16382804894610/8-', 'Останні дані']
     ]
     res_df = []
+    # Проходимось по всіх лінках
     for url, date in url_and_date:
         ts = TS()
         print(date)
         ts.loads(url)
         workbook = ts.getWorkbook()
+        # Формуємо датафрейм
         df = workbook.worksheets[0].data
         res_df.append(df)
-        # random time sleep
-        time.sleep(random.randint(1, 5))
     res_df = pd.concat(res_df)
     res_df.to_excel('nkrekp.xlsx')
 
