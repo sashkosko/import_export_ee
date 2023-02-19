@@ -10,15 +10,15 @@ if __name__ == '__main__':
     # і відмітити потрібні дні галочками. Потім натиснути кнопку шерингу і скопіювати url
     # Якщо вибрати одночасно більше 30 днів, то витянути дані не можна. Тому
     url_and_date = [
-        ['https://public.tableau.com/shared/B55JK3CC4', '01_10_22-23_01_23'],
-        ['https://public.tableau.com/shared/97DQKRQPC', '01_09_22-30_09_22'],
-        ['https://public.tableau.com/shared/S6MG59ZZ3', '01_08_22-31_08_22'],
-        ['https://public.tableau.com/shared/TG62Y4C9W', '01_07_22-31_07_22'],
-        ['https://public.tableau.com/shared/ZSCSM3GK8', '01_05_22-31_05_22'],
-        ['https://public.tableau.com/shared/YWZXW5439', '01_04_22-30_04_22'],
-        ['https://public.tableau.com/shared/W27W2JXQD', '01_02_22-31_03_22'],
-        ['https://public.tableau.com/shared/63K2GKWFC', '01_01_22-31_01_22']
-        ['https://public.tableau.com/views/DAM_16382804894610/8-', 'Останні дані']
+        ['https://public.tableau.com/shared/Q7HJQ3TQ3', '25.01.23-15.01.23'],
+        ['https://public.tableau.com/shared/B55JK3CC4', '01.10.22-23.01.23'],
+        ['https://public.tableau.com/shared/97DQKRQPC', '01.09.22-30.09.22'],
+        ['https://public.tableau.com/shared/S6MG59ZZ3', '01.08.22-31.08.22'],
+        ['https://public.tableau.com/shared/TG62Y4C9W', '01.07.22-31_07_22'],
+        ['https://public.tableau.com/shared/ZSCSM3GK8', '01.05.22-31.05.22'],
+        ['https://public.tableau.com/shared/YWZXW5439', '01.04.22-30.04.22'],
+        ['https://public.tableau.com/shared/W27W2JXQD', '01.02.22-31.03.22'],
+        ['https://public.tableau.com/shared/63K2GKWFC', '01.01.22-31.01.22']
     ]
     res_df = []
     # Проходимось по всіх лінках
