@@ -91,8 +91,6 @@ if __name__ == '__main__':
                                 res_df['Країна'] == country)].empty:
                         continue
                     else:
-                        # res_df = res_df.append({'Дата': date, 'Час': hour, 'Торгова зона': 'ОЕС України (синхронізована з ENTSO-E)', 'Митний режим': regime, 'Країна': country, 'Обсяг, МВт*год': 0}, ignore_index=True)
-                        # використати concat замість append
                         res_df = pd.concat([res_df, pd.DataFrame(
                             {'Дата': date, 'Час': hour, 'Торгова зона': 'ОЕС України (синхронізована з ENTSO-E)',
                              'Митний режим': regime, 'Країна': country, 'Обсяг, МВт*год': 0}, index=[0])],
