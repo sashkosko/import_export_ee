@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     print(f'Дані з {first_date} по {last_date}(включно)')
 
-    # З вказаної дати до вчорашнього дня (включно)
+    # Дати з першої по останню
     daterange = pd.date_range(start=first_date, end=last_date)
 
     for date in daterange:
