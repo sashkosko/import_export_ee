@@ -77,7 +77,8 @@ if __name__ == '__main__':
 
     # Дати з першої по останню
     daterange = pd.date_range(start=first_date, end=last_date)
-
+    
+    # Формуємо остаточний датафрейм, де всф відсутні дані будуть нульовими (тобто "Обсяг, МВт*год" буде 0)
     for date in daterange:
         for hour in hours_list:
             for regime in regime_list:
