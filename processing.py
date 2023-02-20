@@ -16,9 +16,7 @@ if __name__ == '__main__':
         ['https://public.tableau.com/shared/S6MG59ZZ3', '01.08.22-31.08.22'],
         ['https://public.tableau.com/shared/TG62Y4C9W', '01.07.22-31_07_22'],
         ['https://public.tableau.com/shared/ZSCSM3GK8', '01.05.22-31.05.22'],
-        ['https://public.tableau.com/shared/YWZXW5439', '01.04.22-30.04.22'],
-        ['https://public.tableau.com/shared/W27W2JXQD', '01.02.22-31.03.22'],
-        ['https://public.tableau.com/shared/63K2GKWFC', '01.01.22-31.01.22']
+        ['https://public.tableau.com/shared/YWZXW5439', '01.04.22-30.04.22']
     ]
     res_df = []
     # Проходимось по всіх лінках
@@ -60,6 +58,10 @@ if __name__ == '__main__':
                                     'date': 'Дата'})
     # Розташуємо стовбчики в потрібній послідовності
     res_df = res_df[['Дата', 'Час', 'Торгова зона', 'Митний режим', 'Країна', 'Обсяг, МВт*год']]
+    # Знайдемо останню дату в датафреймі
+    last_date = res_df['Дата'].max()
+    # Отримуємо першу дату з стовбчика 'Дата'
+    first_date = res_df['Дата'].min()
     
     # Так як в розпорядника є тільки ненульові дані а в датафреймі потрібно щоб були всі записи, то послідовність така:
     # - Створюємо датафрейм з нульовими записами
@@ -73,13 +75,7 @@ if __name__ == '__main__':
     counties_list = ['Молдова', 'Польща', 'Румунія', 'Словаччина', 'Угорщина']
     regime_list = ['експорт', 'імпорт']
     # Отримуємо першу дату з стовбчика 'Дата'
-    first_date = res_df['Дата'].min()
-    # Ввести дату в форматі '2020-01-01' використовуючи input()
-    last_date = input('Введіть дату в форматі "YYYY/MM/DD": ')
-    # перетворити введену дату в формат datetime
-    last_date = pd.to_datetime(last_date)
 
-    # last_date = datetime.strptime(last_date, '%Y/%m/%d')
 
     print(f'Дані з {first_date} по {last_date}(включно)')
 
@@ -103,5 +99,4 @@ if __name__ == '__main__':
                                            ignore_index=True)
     res_df = res_df.sort_values(by=['Дата', 'Час', 'Торгова зона', 'Митний режим',
                                     'Країна'])  # сортуємо по даті, часу, торговій зоні, митному режиму, країні
-    # res_df.columns = range(res_df.shape[1]) # перейменовуємо стовбчики від 0 до кінця
-    res_df.to_excel(f'{path}/scrape_data/{last_date.strftime("%Y_%m_%d")}_import_eksport_pohodynno.xlsx', index=False)
+    res_df.to_excel('import_eksport_pohodynno.xlsx', index=False)
